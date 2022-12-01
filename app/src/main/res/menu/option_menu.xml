@@ -2,8 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/delete_all_notes"
-        android:title="Delete All Notes"/>
+    <item
+        android:id="@+id/delete_all_notes"
+        android:title="Borrar todos los alimentos" />
 
     <item
         android:title="searchbar"

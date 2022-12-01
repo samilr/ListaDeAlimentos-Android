@@ -1,4 +1,4 @@
-package com.example.notesapp;
+package com.example.alimentosapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class AddAlimentosActivity extends AppCompatActivity {

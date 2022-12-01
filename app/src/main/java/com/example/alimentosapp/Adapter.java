@@ -1,4 +1,4 @@
-package com.example.notesapp;
+package com.example.alimentosapp;
 
 import android.app.Activity;
 import android.content.Context;

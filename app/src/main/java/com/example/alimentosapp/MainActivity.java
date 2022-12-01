@@ -1,4 +1,4 @@
-package com.example.notesapp;
+package com.example.alimentosapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;

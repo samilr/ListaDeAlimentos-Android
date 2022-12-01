@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.notesapp">
+    package="com.example.alimentosapp">
 
     <application
         android:allowBackup="true"
@@ -9,9 +9,9 @@
         android:roundIcon="@drawable/notes"
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesApp">
-        <activity android:name=".UpdateActivity"></activity>
-        <activity android:name=".AddAlimentosActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.alimentosapp.UpdateActivity"></activity>
+        <activity android:name="com.example.alimentosapp.AddAlimentosActivity" />
+        <activity android:name="com.example.alimentosapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

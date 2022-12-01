@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/notes"
+        android:icon="@drawable/img"
         android:label="@string/app_name"
         android:roundIcon="@drawable/notes"
         android:supportsRtl="true"

@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class AddNotesActivity extends AppCompatActivity {
+public class AddAlimentosActivity extends AppCompatActivity {
     EditText title, description;
     Button addNoteButton;
 
@@ -20,23 +22,23 @@ public class AddNotesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notes_add);
 
         title = findViewById(R.id.title_edit);
-        description = findViewById(R.id.description_edit);
         addNoteButton = findViewById(R.id.add_note);
 
         addNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!TextUtils.isEmpty(title.getText().toString()) || !TextUtils.isEmpty(description.getText().toString())){
-                    Database db = new Database(AddNotesActivity.this);
-                    db.addNotes(title.getText().toString(),description.getText().toString());
+                    Database db = new Database(AddAlimentosActivity.this);
 
-                    Intent intent = new Intent(AddNotesActivity.this,MainActivity.class);
+                    db.addNotes(title.getText().toString());
+
+                    Intent intent = new Intent(AddAlimentosActivity.this,MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
 
                 } else {
-                    Toast.makeText(AddNotesActivity.this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddAlimentosActivity.this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show();
                 }
             }
         });

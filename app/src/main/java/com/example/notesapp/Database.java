@@ -9,16 +9,17 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.Date;
+
 public class Database  extends SQLiteOpenHelper {
 
     Context context;
-    private static final String DatabaseName = "MyNotes";
+    private static final String DatabaseName = "TablaAlimentos";
     private static final int DatabaseVersion = 1;
 
-    private static final String tableName = "mynotes";
+    private static final String tableName = "TablaAlimentos";
     private static final String columnId = "id";
     private static final String columnTitle = "title";
-    private static final String columnDescription = "description";
 
 
 
@@ -29,11 +30,7 @@ public class Database  extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE "+tableName+
-                " ("+columnId+ " INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                columnTitle+ " TEXT, "+
-                columnDescription +" Text);";
-        db.execSQL(query);
+        String query = "CREATE TABLE "+tableName+ " ("+columnId+ " INTEGER PRIMARY KEY AUTOINCREMENT,"+ columnTitle+ " TEXT);"; db.execSQL(query);
     }
 
     @Override
@@ -42,13 +39,12 @@ public class Database  extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void  addNotes(String title, String desc){
+    public void  addNotes(String title){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put(columnTitle,title);
-        cv.put(columnDescription,desc);
 
         long resultValue = db.insert(tableName,null,cv);
 
@@ -77,12 +73,10 @@ public class Database  extends SQLiteOpenHelper {
         database.execSQL(query);
     }
 
-
-    void updateNotes(String title,String desc , String id){
+    void updateNotes(String title, String id){
         SQLiteDatabase database =  this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(columnTitle,title);
-        contentValues.put(columnDescription,desc);
 
         long resut  = database.update(tableName,contentValues,"id=?",new String[]{id});
         if (resut == -1){

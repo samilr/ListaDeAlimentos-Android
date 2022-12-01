@@ -5,9 +5,8 @@ public class Model {
     String desciption;
     String id;
 
-    public Model(String id, String title, String desciption) {
+    public Model(String id, String title) {
         this.title = title;
-        this.desciption = desciption;
         this.id = id;
     }
 

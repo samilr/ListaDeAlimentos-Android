@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     List<Model> noteslist;
     Database database;
     TextView mTextview;
+    ImageView imageV;
     CoordinatorLayout coordinatorLayout;
 
     @Override
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mTextview = findViewById(R.id.textView_id);
+        imageV = findViewById(R.id.imageView);
         recyclerView = findViewById(R.id.recycler_id);
         mFloatingButton = findViewById(R.id.fab);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.layout_main);
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         if ( noteslist.isEmpty()){
-            mTextview.setText("No hay notas.");
+            mTextview.setText("No hay Alimentos.");
         } else {
             mTextview.setVisibility(View.GONE);
         }
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         mFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,AddNotesActivity.class));
+                startActivity(new Intent(MainActivity.this, AddAlimentosActivity.class));
             }
         });
 
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.option_menu,menu);
         MenuItem searchItem = menu.findItem(R.id.search_bar);
         SearchView searchView = (SearchView) searchItem.getActionView();
-        searchView.setQueryHint("Buscar notas...");
+        searchView.setQueryHint("Buscar Alimentos...");
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -94,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
     public void fetchAllNotes(){
         Cursor cursor = database.readNotes();
         if (cursor.getCount() == 0){
-            Toast.makeText(this, "No hay notas", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No hay Alimentos", Toast.LENGTH_SHORT).show();
         } else {
             while (cursor.moveToNext()){
-                noteslist.add(new Model(cursor.getString(0),cursor.getString(1),cursor.getString(2)));
+                noteslist.add(new Model(cursor.getString(0),cursor.getString(1)));
                 System.out.println("Notes:-"+noteslist.indexOf(1));
             }
         }
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.delete_all_notes){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("Quieres borrar todas las notas?")
+            builder.setMessage("Quieres borrar todas los Alimentos?")
             .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

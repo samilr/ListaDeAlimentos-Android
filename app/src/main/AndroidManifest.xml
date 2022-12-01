@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesApp">
         <activity android:name=".UpdateActivity"></activity>
-        <activity android:name=".AddNotesActivity" />
+        <activity android:name=".AddAlimentosActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

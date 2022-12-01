@@ -10,23 +10,13 @@
     tools:context=".UpdateActivity">
 
     <EditText
-        android:id="@+id/title"
+        android:id="@+id/titleShow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_margin="8dp"
         android:inputType="textPersonName"
         android:hint="Enter Title" />
-
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_margin="8dp"
-        android:layout_below="@id/title"
-        android:inputType="textPersonName"
-        android:hint="Enter Description" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/update_note"
@@ -39,7 +29,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#67c100"
+        android:background="#2196F3"
         android:text="ACTUALIZAR NOTA"
         android:textColor="@color/white"
         android:textSize="18sp" />

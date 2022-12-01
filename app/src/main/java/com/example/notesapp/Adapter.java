@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,14 +22,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
 
     Context context;
     Activity activity;
-    List<Model> notesList;
+    List<Model> alimentosList;
     List<Model>newList;
 
-    public Adapter(Context context, Activity activity, List<Model> notesList) {
+    public Adapter(Context context, Activity activity, List<Model> alimentosList) {
         this.context = context;
         this.activity = activity;
-        this.notesList = notesList;
-        newList = new ArrayList<>(notesList);
+        this.alimentosList = alimentosList;
+        newList = new ArrayList<>(alimentosList);
     }
 
     @NonNull
@@ -40,17 +41,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.title.setText(notesList.get(position).getTitle());
-        holder.description.setText(notesList.get(position).getDesciption());
-
+        holder.titleToShow.setText(alimentosList.get(position).getTitle());
+        holder.img.setImageResource(R.drawable.img);
         holder.mLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,UpdateActivity.class);
-                intent.putExtra("title",notesList.get(position).getTitle());
-                intent.putExtra("desc",notesList.get(position).getDesciption());
-                intent.putExtra("id",notesList.get(position).getId());
-
+                intent.putExtra("title", alimentosList.get(position).getTitle());
+                intent.putExtra("id", alimentosList.get(position).getId());
                 activity.startActivity(intent);
 
             }
@@ -59,7 +57,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
 
     @Override
     public int getItemCount() {
-        return notesList.size();
+        return alimentosList.size();
     }
 
     @Override
@@ -88,30 +86,31 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> implemen
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            notesList.clear();
-            notesList.addAll((List)results.values);
+            alimentosList.clear();
+            alimentosList.addAll((List)results.values);
             notifyDataSetChanged();
         }
     };
 
     public class MyViewHolder extends  RecyclerView.ViewHolder {
-        TextView title, description;
+        TextView titleToShow;
+        ImageView img;
         RelativeLayout mLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mLayout  = itemView.findViewById(R.id.note_layout);
-            title = itemView.findViewById(R.id.title);
-            description = itemView.findViewById(R.id.description);
+            titleToShow = itemView.findViewById(R.id.titleShow);
+            img = itemView.findViewById(R.id.imageView);
         }
     }
 
     public List<Model> getList(){
-        return  notesList;
+        return alimentosList;
     }
     public void  removeItem(int poition){
-        notesList.remove(poition);
+        alimentosList.remove(poition);
         notifyItemRemoved(poition);
     }
 
